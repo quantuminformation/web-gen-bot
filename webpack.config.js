@@ -23,7 +23,7 @@ module.exports = {
   },
   plugins: [
     new WebpackBuildNotifierPlugin({
-      title: "Audio Orders"
+      title: "web-gen-bot"
       //,suppressSuccess: true
     })
   ]

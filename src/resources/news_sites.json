@@ -1,7 +1,18 @@
 [
-  "https://www.bbc.co.uk/news",
-  "https://foxbusiness.com",
-  "https://www.foxnews.com/",
-  "https://edition.cnn.com/",
-  "https://www.itv.com/news/"
+  {
+    "name": "BBC News",
+    "url": "https://www.bbc.co.uk/news"
+  },
+  {
+    "name": "Fox News",
+    "url": "https://www.foxnews.com/"
+  },
+  {
+    "name": "CNN Edition",
+    "url": "https://edition.cnn.com/"
+  },
+  {
+    "name": "ITV News",
+    "url": "https://www.itv.com/news/"
+  }
 ]
