@@ -7,13 +7,20 @@ type SiteDefinition = {
 
 export class Api {
   sites: SiteDefinition[] = null;
+  htmlExamples: string[] = null;
+  loadExamples() {
+
+  }
   loadSites() {
     axios
       .get("./src/resources/news_sites.json")
       .then((response: AxiosResponse<SiteDefinition[]>) => {
         this.sites = response.data;
 
-        axios
+        (document.querySelector(
+          "#theFrame"
+        ) as HTMLIFrameElement).src = this.sites[0].url;
+        /*        axios
           .get(this.sites[0].url)
           .then(response => {
             if (response.status === 200) {
@@ -22,7 +29,7 @@ export class Api {
           })
           .catch(err => {
             throw new Error(err);
-          });
+          })*/
 
         /*        this.sites.forEach(site => {
           axios
