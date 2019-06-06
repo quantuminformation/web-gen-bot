@@ -1,7 +1,5 @@
 {
   "compilerOptions": {
-    "outDir": "./build",
-    "sourceMap": true,
     "moduleResolution": "node",
     "noImplicitAny": true,
     "module": "es6",
