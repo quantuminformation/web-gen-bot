@@ -16,5 +16,6 @@ Aims
 
 # to run
 
-- `npm run build`
+- `npm run build` or `npm run watch` (frontend)
+- `cd node_test & npm start` (backend)
 - open index.html in the browser

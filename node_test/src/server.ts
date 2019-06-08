@@ -4,12 +4,21 @@ import fs from "fs";
 const files = fs.readdirSync("./src/resources/exampleHTMLs");
 
 import { Request, Response } from "express";
-const server = express();
+const app = express();
 const port = 3000;
 
-server.get("/getExampleList", (req: Request, res: Response) => res.send(files));
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
 
-server.get("/getExampleContents", (req: Request, res: Response) => {
+app.get("/getExampleList", (req: Request, res: Response) => res.send(files));
+
+app.get("/getExampleContents", (req: Request, res: Response) => {
   const promises = files.map(function(_path) {
     return new Promise((resolve, reject) => {
       console.log(__dirname);
@@ -29,16 +38,15 @@ server.get("/getExampleContents", (req: Request, res: Response) => {
   });
 
   Promise.all(promises).then(function(results) {
-    res.writeHead(200, { "Content-Type": "text/json" });
-    results.forEach(function(content) {
-      res.write(content);
+    res.setHeader("Content-Type", "application/json");
+    let fullContent: string[] = [];
+    results.forEach((content: string) => {
+      fullContent.push(content);
     });
-    res.end();
+    res.end(JSON.stringify(fullContent));
   });
 
   //  res.send();
 });
 
-server.listen(port, () =>
-  console.log(`Example app listening on port ${port}!`)
-);
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));

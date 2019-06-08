@@ -9,7 +9,12 @@ export class Api {
   sites: SiteDefinition[] = null;
   htmlExamples: string[] = null;
   loadExamples() {
-
+    axios
+      .get("http://localhost:3000/getExampleContents")
+      .then((response: AxiosResponse) => {
+        this.htmlExamples = response.data;
+      })
+      .catch(err => {});
   }
   loadSites() {
     axios
