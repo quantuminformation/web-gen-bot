@@ -2,7 +2,7 @@ const path = require("path");
 var WebpackBuildNotifierPlugin = require("webpack-build-notifier");
 
 module.exports = {
-  entry: "./src/server.ts",
+  entry: "./src/app.ts",
   mode: "development",
   devtool: "source-map",
   module: {

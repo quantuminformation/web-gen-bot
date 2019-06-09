@@ -3,7 +3,7 @@
     "moduleResolution": "node",
     "noImplicitAny": true,
     "module": "es6",
-    "target": "es6"
+    "target": "ES2017"
   },
   "exclude": ["node_modules","node_test"]
 }

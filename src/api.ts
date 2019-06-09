@@ -8,13 +8,17 @@ type SiteDefinition = {
 export class Api {
   sites: SiteDefinition[] = null;
   htmlExamples: string[] = null;
-  loadExamples() {
-    axios
-      .get("http://localhost:3000/getExampleContents")
-      .then((response: AxiosResponse) => {
-        this.htmlExamples = response.data;
-      })
-      .catch(err => {});
+  loadExamples(): Promise<string[]> {
+    return new Promise(function(resolve, reject) {
+      axios
+        .get("http://localhost:3000/getExampleContents")
+        .then((response: AxiosResponse<string[]>) => {
+          resolve(response.data);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
   }
   loadSites() {
     axios
